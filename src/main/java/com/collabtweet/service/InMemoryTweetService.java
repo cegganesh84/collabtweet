@@ -12,8 +12,9 @@ import java.util.TreeMap;
  */
 public class InMemoryTweetService implements TweetService {
 
-    HashMap<String, ArrayList<String>> following = new HashMap<>();
-    HashMap<String, TreeMap<Long, String>> tweets = new HashMap<>();
+    // not safe in concurrent scenarios
+    private static HashMap<String, ArrayList<String>> following = new HashMap<>();
+    private static HashMap<String, TreeMap<Long, String>> tweets = new HashMap<>();
 
     @Override
     public boolean storeTweet(String user, String tweet) throws StorageException {

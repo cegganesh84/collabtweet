@@ -6,6 +6,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Main class.
@@ -24,6 +26,9 @@ public class Main {
         // in com.collabtweet package
         final ResourceConfig rc = new ResourceConfig().packages("com.collabtweet");
 
+        final Map<String, Object> config = new HashMap<String, Object>();
+        config.put("com.sun.jersey.api.json.POJOMappingFeature", true);
+        rc.addProperties(config);
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
