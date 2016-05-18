@@ -6,10 +6,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Root resource (exposed at "myresource" path)
+ * Root resource (exposed at "collabtweet" path)
  */
-@Path("myresource")
-public class MyResource {
+@Path("collabtweet")
+public class CollabTweet {
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -18,8 +18,9 @@ public class MyResource {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("tweet")
+    public String tweetIt() {
         return "Got it!";
     }
 }
